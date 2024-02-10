@@ -1,0 +1,113 @@
+1. Elegir el lugar donde iniciar el proyecto, ej Escritorio
+2. Digitar el siguiente comando composer create-project laravel/laravel (Escribir nombre del proyecto)
+3. para arrancar el servidor escribir php artisan serve
+4.para verificar si esta bien las credenciales de la bd escribimos php artisan migrate
+5. php artisan
+
+para instalar tailwindcss
+
+digitar el comando npm install -D tailwindcss postcss autoprefixer
+
+Para crear el arhcivo de configuaracion de tailwind.confing.js y postcss.config.js
+-npx tailwind init -p
+
+MIGRACIONES:
+-php artisan migrate
+
+para crear una migracion se digita
+-php artisan make:migration (add_username_to_users_table) --create=vacantes(para especificar como se llamara la tabla)
+
+si se han creado nuevas migraciones y se han hecho cambios digitar el comando para actualizar
+-php artisan migrate
+
+para crear un modelo(ORM)
+-php artisan make:model (nombre del modelo)
+
+cuando hacemos un cambio a la migracion se debe hacer un roolback y volver a migrar
+-php artisan migrate:rollback --step=1
+-php artisan migrate
+
+para crear un controlador
+-php artisan make:controller (NombreControlador)
+- si se coloca -r a lo ultimo siginifica que es un resource, va a tener logica para mostrar, editar, actualizar ect...
+
+para limpiar toda la tabla
+-php artisan migrate:refresh
+
+Para instalar inervetionImage
+-composer require intervention/image
+
+Se puede Crear modelo, migracion, controlador y masde un solocomando
+-php artisan make:model --migration --factory Post
+
+Ejecutar Factorys
+php artisan tinker
+-Post::factory()->times(200)->create();
+
+recargar el composer por si hay errorer
+-composer dump-autoload
+
+Comando tinker
+$usuario = User(o instancia del modelo)::find(id);
+$usuario->posts(o nombre de la relacion)
+
+Crear Policyes
+php artisan make:policy PostPolicy --model=Post(o nombre del modelo)
+
+Para limpiar el cache de las rutas
+php artisan route:cache
+
+para ver las rutas soportadas
+php artisan route:list
+
+comando ayuda
+1-php artisan optimize:clear
+2-php artisan view:clear
+3-php artisan cache:clear
+
+para crear un componente
+php artisan make:component ListarPost
+
+LiveWire: es un framework fullstack para laravel
+-composer require livewire/livewire
+-crear un componete livewire: php artisan make:livewire (nombre del componente)
+
+Laravel Breeze:
+-composer require laravel/breeze --dev : para descargar
+-php artisan breeze:install : para instalarlo
+-npm install para instalar dependencias
+-npm run dev para compilar los assets
+
+Crear seeder
+-php artisan make:seeder(ej:SalarioSeeder)
+-php artisan db:seed
+
+limpiar cache almacenado:
+
+php artisan route:clear
+
+php artisan config:clear
+
+php artisan cache:clear
+
+Consejo: Ir creando mas migraciones conforme se vaya creando mas campos a las tablas del proyecto o mas tablas al proyecto
+
+Publicar package:(para editar el paginador de tailwindcss)
+-php artisan vendor:publish --tag=laravel-pagination
+
+Crear un enlace simbolico:
+- php artisan storage:link
+
+Para Notificaciones
+php artisan make:notification (Notificacion o caulquier otro nombre)
+crear tabla de notifiaciones: php artisan notifications:table
+
+Controlador Invoke
+-php artisan make:controller NotificacionController(o otro nombre) --invokable
+
+Crear un Middleware: es util si quieres asegurate de que una funcion se ejecute en pantalla antes de mostar algo,
+util para redireccionar, ya que los policies no redireccionan
+-php artisan make:middleware RolUsuario(o caulquier otro nombre)
+-poner el middlewareen el kernel
+
+Consejo: con breeze para la traduccion, la carpeta no va en resources, va en vendor/laravel/framework/src/translation..
